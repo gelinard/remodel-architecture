@@ -1,0 +1,15 @@
+name: Idea or question
+description: Suggest an improvement, or ask how to apply the architecture to your system.
+labels: ["question"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like to suggest or ask?
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Your situation, for example the kind of legacy system you work with. It helps to give a useful answer.
