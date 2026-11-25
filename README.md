@@ -11,6 +11,7 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/gelinard/remodel-architecture/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/gelinard/remodel-architecture/actions/workflows/ci.yml/badge.svg"></a>
   <img alt=".NET 10" src="https://img.shields.io/badge/.NET-10-512BD4">
   <img alt="Azure Functions isolated worker" src="https://img.shields.io/badge/Azure%20Functions-isolated%20worker-0062AD">
   <img alt="EF Core and Dapper" src="https://img.shields.io/badge/data-EF%20Core%20%2B%20Dapper-6A4C93">
