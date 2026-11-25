@@ -478,6 +478,8 @@ These are the next ideas, not promises. Is your use case missing? [Open an issue
 
 This project is provided as-is, as a reference and a starting point. Issues, questions and ideas are welcome, and so are stories about how you used it on your own legacy system. Support is best-effort.
 
+See [CONTRIBUTING.md](CONTRIBUTING.md) to build, test and propose a change, and the [Code of Conduct](CODE_OF_CONDUCT.md) for how we work together. Please report security problems privately, as described in [SECURITY.md](SECURITY.md).
+
 If Remodel Architecture helps you, a star helps other teams find it.
 
 ## License

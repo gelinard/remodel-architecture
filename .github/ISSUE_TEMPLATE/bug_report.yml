@@ -1,0 +1,24 @@
+name: Bug report
+description: Something doesn't work as described.
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How to reproduce
+      description: The commands, requests or code that show the problem.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Operating system, .NET SDK version (`dotnet --version`) and Docker version.
+      placeholder: Windows 11, .NET SDK 10.0.302, Docker 28.4

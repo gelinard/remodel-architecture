@@ -1,0 +1,29 @@
+# Weekly update pull requests for NuGet packages (Directory.Packages.props) and GitHub Actions.
+# Minor and patch NuGet updates come together in one pull request to keep the noise low.
+
+version: 2
+updates:
+  - package-ecosystem: nuget
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      nuget-minor-and-patch:
+        update-types: ["minor", "patch"]
+    ignore:
+      # Stay on the .NET 10 LTS line, and on the SqlClient version that EF Core 10 is built on (see ADR 8).
+      - dependency-name: "Microsoft.EntityFrameworkCore*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "Microsoft.Extensions.*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "Npgsql.EntityFrameworkCore.PostgreSQL"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "Microsoft.Data.SqlClient"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "dotnet-ef"
+        update-types: ["version-update:semver-major"]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
