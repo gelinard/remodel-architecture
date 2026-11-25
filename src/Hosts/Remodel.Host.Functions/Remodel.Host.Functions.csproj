@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AzureFunctionsVersion>v4</AzureFunctionsVersion>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Storage.Queues" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" />
+  </ItemGroup>
+
+  <!-- The host knows every adapter, and configuration picks which one runs. -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\Modules\Fleet\Remodel.Fleet.Adapters.Dapper\Remodel.Fleet.Adapters.Dapper.csproj" />
+    <ProjectReference Include="..\..\Modules\Fleet\Remodel.Fleet.Adapters.EfCore\Remodel.Fleet.Adapters.EfCore.csproj" />
+    <ProjectReference Include="..\..\Modules\Bookings\Remodel.Bookings.Adapters.EfCore\Remodel.Bookings.Adapters.EfCore.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,27 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/BuildingBlocks/">
+    <Project Path="src/BuildingBlocks/Remodel.Dispatching/Remodel.Dispatching.csproj" />
+  </Folder>
+  <Folder Name="/src/Hosts/">
+    <Project Path="src/Hosts/Remodel.Host.Functions/Remodel.Host.Functions.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/" />
+  <Folder Name="/src/Modules/Bookings/">
+    <Project Path="src/Modules/Bookings/Remodel.Bookings.Adapters.EfCore/Remodel.Bookings.Adapters.EfCore.csproj" />
+    <Project Path="src/Modules/Bookings/Remodel.Bookings.Core/Remodel.Bookings.Core.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Fleet/">
+    <Project Path="src/Modules/Fleet/Remodel.Fleet.Adapters.Dapper/Remodel.Fleet.Adapters.Dapper.csproj" />
+    <Project Path="src/Modules/Fleet/Remodel.Fleet.Adapters.EfCore/Remodel.Fleet.Adapters.EfCore.csproj" />
+    <Project Path="src/Modules/Fleet/Remodel.Fleet.Core/Remodel.Fleet.Core.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Remodel.ArchitectureTests/Remodel.ArchitectureTests.csproj" />
+    <Project Path="tests/Remodel.Bookings.ContractTests/Remodel.Bookings.ContractTests.csproj" />
+    <Project Path="tests/Remodel.Bookings.Tests/Remodel.Bookings.Tests.csproj" />
+    <Project Path="tests/Remodel.Dispatching.Tests/Remodel.Dispatching.Tests.csproj" />
+    <Project Path="tests/Remodel.Fleet.ContractTests/Remodel.Fleet.ContractTests.csproj" />
+    <Project Path="tests/Remodel.Fleet.Tests/Remodel.Fleet.Tests.csproj" />
+  </Folder>
+</Solution>

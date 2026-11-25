@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="TngTech.ArchUnitNET" />
+  </ItemGroup>
+
+  <!--
+    Modules are found by convention: every Core and adapter project under src/Modules is referenced
+    through a wildcard, so a new module is checked by every rule without changing this file or the tests.
+  -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Modules\*\Remodel.*.Core\*.csproj" />
+    <ProjectReference Include="..\..\src\Modules\*\Remodel.*.Adapters.*\*.csproj" />
+  </ItemGroup>
+
+</Project>

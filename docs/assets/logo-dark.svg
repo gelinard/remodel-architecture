@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="380" height="96" viewBox="0 0 380 96" role="img" aria-labelledby="title">
+  <title id="title">Remodel Architecture for .NET</title>
+  <!-- Mark: modules (blocks) remodeled one at a time on a foundation that stays (the legacy database). -->
+  <g>
+    <rect x="5.5" y="11.5" width="21" height="21" rx="4.5" fill="none" stroke="#6e7681" stroke-width="3"/>
+    <rect x="34" y="10" width="24" height="24" rx="5" fill="#8B6CF6"/>
+    <rect x="65.5" y="11.5" width="21" height="21" rx="4.5" fill="none" stroke="#6e7681" stroke-width="3"/>
+    <rect x="4" y="40" width="24" height="24" rx="5" fill="#8B6CF6"/>
+    <rect x="34" y="40" width="24" height="24" rx="5" fill="#8B6CF6"/>
+    <rect x="65.5" y="41.5" width="21" height="21" rx="4.5" fill="none" stroke="#6e7681" stroke-width="3"/>
+    <rect x="4" y="70" width="84" height="14" rx="4" fill="#8b949e"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="110" y="56" fill="#e6edf3" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="46" font-weight="700" letter-spacing="-0.5">Remodel</text>
+  <text x="112" y="82" fill="#8b949e" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13.5" font-weight="600" letter-spacing="3.2">ARCHITECTURE FOR .NET</text>
+</svg>

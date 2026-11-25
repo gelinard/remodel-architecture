@@ -1,0 +1,11 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "Fleet__Adapter": "Dapper",
+    "ConnectionStrings__FleetLegacy": "Server=localhost,1433;Database=FleetLegacy;User Id=sa;Password=Remodel!Passw0rd;TrustServerCertificate=True",
+    "ConnectionStrings__Bookings": "Host=localhost;Port=5432;Database=bookings;Username=remodel;Password=Remodel!Passw0rd",
+    "Bookings__MigrateOnStartup": "true"
+  }
+}

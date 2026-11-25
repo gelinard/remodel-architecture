@@ -1,0 +1,82 @@
+# Local infrastructure for running the sample.
+#   docker compose up -d
+# SQL Server gets the legacy Fleet database (db/fleet-legacy) applied once, by the db-init service.
+# PostgreSQL starts with an empty "bookings" database. The Bookings schema comes from the EF Core migrations,
+# which the Functions host applies at startup in local development.
+# The contract tests don't need this file: they start their own databases with Testcontainers.
+
+name: remodel
+
+x-sqlserver-image: &sqlserver-image mcr.microsoft.com/mssql/server:2022-CU28-ubuntu-22.04
+
+services:
+  sqlserver:
+    image: *sqlserver-image
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD:-Remodel!Passw0rd}
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P \"$$MSSQL_SA_PASSWORD\" -Q 'SELECT 1' -b -o /dev/null"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+
+  # One-shot job: creates the FleetLegacy database and applies the scripts in order.
+  # It does nothing if the database already exists, so it is safe to run on every "up".
+  db-init:
+    image: *sqlserver-image
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+    environment:
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD:-Remodel!Passw0rd}
+    volumes:
+      - ./db/fleet-legacy:/scripts:ro
+    entrypoint: ["/bin/bash", "-c"]
+    command:
+      - |
+        set -e
+        sqlcmd() { /opt/mssql-tools18/bin/sqlcmd -C -b -S sqlserver -U sa -P "$$MSSQL_SA_PASSWORD" "$$@"; }
+        if [ "$$(sqlcmd -h -1 -W -Q "SET NOCOUNT ON; SELECT DB_ID('FleetLegacy')")" != "NULL" ]; then
+          echo "FleetLegacy already exists. Nothing to do."
+          exit 0
+        fi
+        sqlcmd -Q "CREATE DATABASE FleetLegacy"
+        for script in /scripts/*.sql; do
+          echo "Applying $$script"
+          sqlcmd -d FleetLegacy -i "$$script"
+        done
+        echo "FleetLegacy is ready."
+    restart: "no"
+
+  postgres:
+    image: postgres:18.7
+    environment:
+      POSTGRES_DB: bookings
+      POSTGRES_USER: remodel
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-Remodel!Passw0rd}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql # PostgreSQL 18+ images keep their data below this folder
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U remodel -d bookings"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  azurite:
+    image: mcr.microsoft.com/azure-storage/azurite:3.38.0
+    ports:
+      - "10000:10000" # blobs
+      - "10001:10001" # queues
+      - "10002:10002" # tables
+
+volumes:
+  sqlserver-data:
+  postgres-data:

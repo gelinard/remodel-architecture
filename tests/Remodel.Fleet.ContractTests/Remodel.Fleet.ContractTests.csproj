@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" />
+    <PackageReference Include="Microsoft.Data.SqlClient" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="Testcontainers.MsSql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Modules\Fleet\Remodel.Fleet.Adapters.Dapper\Remodel.Fleet.Adapters.Dapper.csproj" />
+    <ProjectReference Include="..\..\src\Modules\Fleet\Remodel.Fleet.Adapters.EfCore\Remodel.Fleet.Adapters.EfCore.csproj" />
+  </ItemGroup>
+
+  <!-- The tests build the database from the same scripts as docker-compose.yml. -->
+  <ItemGroup>
+    <None Include="..\..\db\fleet-legacy\*.sql" LinkBase="fleet-legacy" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

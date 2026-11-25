@@ -1,0 +1,33 @@
+# Builds the solution and runs every test on each push to main and each pull request.
+# Nothing is deployed. The contract tests start SQL Server and PostgreSQL in Docker,
+# which GitHub's Ubuntu runners provide.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-dotnet@v6
+        with:
+          global-json-file: global.json # the same SDK as on a developer machine
+
+      - run: dotnet restore
+
+      # Warnings are errors (Directory.Build.props), so a warning fails the build here too.
+      - run: dotnet build --no-restore
+
+      # Unit, architecture and contract tests.
+      - run: dotnet test --no-build

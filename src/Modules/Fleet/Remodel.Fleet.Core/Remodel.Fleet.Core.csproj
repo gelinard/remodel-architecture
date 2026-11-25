@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Business code only. No database packages here: adapters bring those. -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\Remodel.Dispatching\Remodel.Dispatching.csproj" />
+  </ItemGroup>
+
+</Project>
